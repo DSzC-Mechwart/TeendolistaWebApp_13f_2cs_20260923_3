@@ -29,11 +29,30 @@ namespace TeendolistaWebApp_13f_2cs_20260923.Pages
 
         public async Task<ActionResult> OnPostAsync()
         {
+            if (!ModelState.IsValid)
+            {
+                await OnGetAsync();
+                return Page();
+            }
+
             _context.Teendok.Add(UjTeendo);
             await _context.SaveChangesAsync();
 
             return RedirectToPage();
         }
 
+        public async Task<IActionResult> OnPostKeszAsync(int id)
+        {
+            var teendo = await _context.Teendok.FindAsync(id);
+
+
+            if (teendo != null)
+            {
+                teendo.Kesz = !teendo.Kesz;
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToPage();
+
+        }
     }
 }

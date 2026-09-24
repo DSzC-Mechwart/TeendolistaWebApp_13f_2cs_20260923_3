@@ -10,8 +10,10 @@
     
     <label>Cim</label>
     <input asp-for="UjTeendo.Cim" />
+    <span asp-validation-for="UjTeendo.Cim" class="text-danger"></span>
     <label>Hatarido</label>
     <input asp-for="UjTeendo.Hatarido" />
+    <span asp-validation-for="UjTeendo.Hatarido" class="text-danger"></span>
     <label>Kesz</label>
     <input asp-for="UjTeendo.Kesz" />
     <button type="submit">Hozzáad</button>
@@ -48,7 +50,12 @@
                     @Html.DisplayFor(model => item.Kesz)
                 </td>
                 <td>
-
+                    <form method="post" asp-page-handler="Kesz" asp-route-id="@item.Id">
+                        <button type="submit">@(item.Kesz ? "Visszaállítás" : "Kész")</button>
+                    </form>
+                    <form method="post" asp-page-handler="Torles" asp-route-id="@item.Id">
+                        <button type="submit" onclick="return confirm('Biztosan törölni akarod?');">Törlés</button>
+                    </form>
                     <!--
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
