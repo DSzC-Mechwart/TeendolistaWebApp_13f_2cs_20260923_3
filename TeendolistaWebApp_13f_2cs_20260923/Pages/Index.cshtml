@@ -1,0 +1,61 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Teendők listája</h1>
+
+<form method="post">
+    
+    <label>Cim</label>
+    <input asp-for="UjTeendo.Cim" />
+    <label>Hatarido</label>
+    <input asp-for="UjTeendo.Hatarido" />
+    <label>Kesz</label>
+    <input asp-for="UjTeendo.Kesz" />
+    <button type="submit">Hozzáad</button>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Teendok[0].Cim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teendok[0].Hatarido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teendok[0].Kesz)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Teendok)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Cim)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Hatarido)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Kesz)
+                </td>
+                <td>
+
+                    <!--
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    -->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

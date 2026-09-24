@@ -1,0 +1,48 @@
+@page
+@model TeendolistaWebApp_13f_2cs_20260923.Pages.TeendoPages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Teendo[0].Cim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teendo[0].Hatarido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teendo[0].Kesz)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Teendo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Cim)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Hatarido)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Kesz)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

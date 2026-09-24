@@ -1,0 +1,46 @@
+@page
+@model TeendolistaWebApp_13f_2cs_20260923.Pages.TeendoPages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Teendo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Teendo.Id" />
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Teendo.Cim" class="control-label"></label>
+                <input asp-for="Teendo.Cim" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Teendo.Cim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teendo.Hatarido" class="control-label"></label>
+                <input asp-for="Teendo.Hatarido" class="form-control" />
+                <span asp-validation-for="Teendo.Hatarido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teendo.Kesz" class="control-label"></label>
+                <input asp-for="Teendo.Kesz" class="form-check-input" />
+                <span asp-validation-for="Teendo.Kesz" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
